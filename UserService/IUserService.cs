@@ -10,6 +10,6 @@ namespace UserService
     {
         void Add(User user);
         void Remove(User user);
-        IEnumerable<User> Search(Predicate<User> predicate);
+        IEnumerable<User> Search(Func<User, bool> predicate);
     }
 }

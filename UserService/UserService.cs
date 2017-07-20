@@ -23,12 +23,17 @@ namespace UserService
 
         public void Remove(User user)
         {
-            throw new NotImplementedException();
+            if (user == null)
+                throw new ArgumentNullException(nameof(user));
+            if (!storage.Remove(user))
+                throw new NotExistedException();
         }
 
-        public IEnumerable<User> Search(Predicate<User> predicate)
+        public IEnumerable<User> Search(Func<User, bool> predicate)
         {
-            throw new NotImplementedException();
+            if (predicate == null)
+                throw new ArgumentNullException(nameof(predicate));
+            return storage.Where(predicate);
         }
 
         private bool UserIsValid(User user)

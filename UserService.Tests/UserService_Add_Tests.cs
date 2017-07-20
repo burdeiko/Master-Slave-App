@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UserService.Exceptions;
+using System.Linq;
 
 namespace UserService.Tests
 {
@@ -39,8 +40,17 @@ namespace UserService.Tests
         public void Add_NameIsNull_ExceptionThrown()
         {
             var service = new UserService();
-            var user = new User() { Age = -13, FirstName = null, LastName = "Smith" };
+            var user = new User() { Age = 13, FirstName = null, LastName = "Smith" };
             service.Add(user);
+        }
+
+        [TestMethod]
+        public void Add_Succedeed()
+        {
+            var service = new UserService();
+            var user = new User() { Age = 13, FirstName = "John", LastName = "Smith" };
+            service.Add(user);
+            Assert.AreEqual(user, service.Search(u => u.Equals(user)).First());
         }
     }
 }
