@@ -10,6 +10,7 @@ namespace UserService
     public class UserService : IUserService
     {
         private List<User> storage = new List<User>();
+        private IdCalculator idCalculator = new IdCalculator();
         public void Add(User user)
         {
             if (user == null)
@@ -18,6 +19,7 @@ namespace UserService
                 throw new UserValidationException();
             if (storage.Contains(user))
                 throw new AlreadyExistsException();
+            user.Id = idCalculator.CreateId();
             storage.Add(user);
         }
 

@@ -43,6 +43,7 @@
     <Compile Include="Exceptions\AlreadyExistsException.cs" />
     <Compile Include="Exceptions\NotExistedException.cs" />
     <Compile Include="Exceptions\UserValidationException.cs" />
+    <Compile Include="IdCalculator.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
